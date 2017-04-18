@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Slabo+27px');
+
+$default-typeface: 'Roboto', Arial, Helvetica, sans-serif;
+$display-typeface: 'Slabo 27px', Georgia, serif;
+
+body {
+    font: 100% $default-typeface;
+}

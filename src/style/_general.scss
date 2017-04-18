@@ -1,0 +1,131 @@
+html, body, #app {
+    width: 100%;
+    height: 100%;
+}
+
+#app {
+    align-items: stretch;
+    display: flex;
+    font-size: 1.65vh;
+    letter-spacing: 0;
+    line-height: calc(1.65vh * 1.618);
+}
+
+#room {
+  display: flex;
+  align-content: stretch;
+  flex-direction: column;
+  height: 100%;
+  #scenario {
+    flex: 9;
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
+    transition: background-color 1s;
+    &.victory {
+      background-color: #DFF1DA;
+      h1 {
+        color: #2B3728;
+      }
+      .letters {
+        background-color: #AFDCA3;
+        h2 {
+          color: #576E51;
+        }
+      }
+    }
+    @for $i from 0 through 6 {
+      $failColor: nth($failColors, $i + 1);
+      &.fails#{$i} {
+        background-color: $failColor;
+        h1 {
+          color: darken($failColor, 55);
+        }
+        .letters {
+          background-color: lighten($failColor, 4);
+          h2 {
+            color: darken($failColor, 40);
+          }
+        }
+      }
+    }
+    #roomName {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      h1 {
+        flex: 1;
+        font-size: 2vh;
+        text-align: center;
+        font-weight: 700;
+        transition: color 1s;
+      }
+    }
+    #game {
+      flex: 9;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .letters {
+          width: 8vh;
+          height: 8vh;
+          margin: 0.8vh;
+          padding: 0;
+          display: inline-flex;
+          align-items: center;
+          transition: background-color 1s;
+          h2 {
+            flex: 1;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 3vh;
+            transition: color 1s;
+          }
+        }
+    }
+  }
+  #keyboard {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: background-color 1s;
+    &.victory {
+      background-color: #AFDCA3;
+      button {
+        background-color: #576E51;
+        color: #AFDCA3;
+      }
+    }
+    @for $i from 0 through 6 {
+      $failColor: nth($failColors, $i + 1);
+      $failBackgroundColor: darken($failColor, 15);
+      $failShadowColor: darken($failColor, 7);
+      &.fails#{$i} {
+        background-color: $failBackgroundColor;
+        button {
+          background-color: darken($failColor, 1);
+          box-shadow: 0 0.5vh 0 $failShadowColor;
+          &:active {
+            background-color: $failShadowColor;
+          }
+          &:disabled {
+            transition: all 1s;
+            background-color: $failShadowColor;
+            color: $failBackgroundColor;
+          }
+        }
+      }
+    }
+    .keyLine {
+      margin: 0.25vh;
+      &:first-of-type {
+        margin-top: 3vh;
+      }
+      &:last-of-type {
+        margin-bottom: 3vh;
+      }
+    }
+  }
+}

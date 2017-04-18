@@ -1,0 +1,92 @@
+[
+    {
+        "category": "Food",
+        "hints": [
+            "It's, botanically, a berry.",
+            "Are native to tropical Indomalaya and Australia.",
+            "It's yellow."
+        ],
+        "word": "Banana"
+    },
+    {
+        "category": "Food",
+        "hints": [
+            "Related to gravity.",
+            "It could be an American multinational technology company.",
+            "It's red."
+        ],
+        "word": "Apple" 
+    },
+    {
+        "category": "Technology",
+        "hints": [
+            "Related to JavaScript",
+            "It's a JavaScript framework.",
+            "It's a Progressive JavaScript framework created by Evan You."
+        ],
+        "word": "VueJS"
+    },
+    {
+        "category": "Education",
+        "hints": [
+            "CEETEPS",
+            "Important Brazilian institutions of higher education.",
+            "They are located in several cities of the São Paulo state."
+        ],
+        "word": "FATEC"
+    },
+    {
+        "category": "Technology",
+        "hints": [
+            "Git",
+            "Web-based Git or version control repository and Internet hosting service.",
+            "The trademark mascot of it is Octocat."
+        ],
+        "word": "Github"
+    },
+    {
+        "category": "Technology",
+        "hints": [
+            "An online social media and social networking service.",
+            "Launched on 2004.",
+            "Launched on February 4, 2004, by Mark Zuckerberg."
+        ],
+        "word": "Facebook"
+    },
+    {
+        "category": "Food",
+        "hints": [
+            "I smell portals.",
+            "It's so delicious and moist",
+            "It's a lie."
+        ],
+        "word": "Cake"
+    },
+    {
+        "category": "Game",
+        "hints": [
+            "The right man in the wrong place...",
+            "...can make all the difference in the world.",
+            "So wake up, Mr. Freeman, and smell the ashes."
+        ],
+        "word": "Half-Life"
+    },
+    {
+        "category": "Game",
+        "hints": [
+            "It's a fictional character.",
+            "It has its own game franchise.",
+            "It's-a me!"
+        ],
+        "word": "Mario"
+    },
+    {
+        "category": "Techonology",
+        "hints": [
+            "It's an American multinational technology company.",
+            "Specialized in Internet-related services and products.",
+            "Mountain View, California."
+        ],
+        "word": "Google"
+    }
+]
