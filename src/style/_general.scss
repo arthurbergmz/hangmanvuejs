@@ -27,10 +27,16 @@ html, body, #app {
       h1 {
         color: #2B3728;
       }
+      h2 {
+        color: lighten(#2B3728, 15);
+      }
       .letters {
         background-color: #AFDCA3;
         h2 {
           color: #576E51;
+        }
+        &.blankspace {
+          background-color: #DFF1DA !important;
         }
       }
     }
@@ -41,8 +47,14 @@ html, body, #app {
         h1 {
           color: darken($failColor, 55);
         }
+        h2 {
+          color: darken($failColor, 40);
+        }
         .letters {
           background-color: lighten($failColor, 4);
+          &.blankspace {
+            background-color: $failColor !important;
+          }
           h2 {
             color: darken($failColor, 40);
           }
@@ -53,12 +65,20 @@ html, body, #app {
       display: flex;
       align-items: center;
       flex: 1;
-      h1 {
+      flex-direction: column;
+      padding: 1vh 0;
+      h1, h2 {
         flex: 1;
-        font-size: 2vh;
         text-align: center;
-        font-weight: 700;
         transition: color 1s;
+      }
+      h1 {
+        font-size: 2vh;
+        font-weight: 700;
+      }
+      h2 {
+        font-size: 1.75vh;
+        font-weight: 700;
       }
     }
     #game {

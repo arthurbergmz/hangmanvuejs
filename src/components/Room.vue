@@ -3,10 +3,11 @@
     <section id="scenario" :class="getBackgroundColor()">
       <div id="roomName">
         <h1>{{ this.room.hints[this.room.hint] }}</h1>
+        <h2 v-show="room.fails >= 0 && room.fails < 6">You have {{6 - room.fails}} chances left.</h2>
       </div>
       <div id="game">
         <template v-for="letter in word">
-          <div class="letters">
+          <div :class="{letters: true, blankspace: letter === ' '}">
             <h2>{{letter}}</h2>
           </div>
         </template>
@@ -100,19 +101,19 @@ export default {
     updateWord () {
       let arr = this.room.word.split('')
       let tmp = []
-      for (let letter of arr) tmp.push(letter === '-' ? letter : (this.room.found.indexOf(letter) === -1 ? '' : letter))
+      for (let letter of arr) tmp.push(letter === '-' || letter === ' ' ? letter : (this.room.found.indexOf(letter) === -1 ? '' : letter))
       this.word = tmp
     },
     pushLetter (letter) {
       if (this.isUnavailable(letter)) return
       this.room.unavailable += letter
-      if (this.room.word.indexOf(letter) === -1) {
+      if (this.hasLetter(letter)) {
+        this.$refs.correct.play()
+        this.room.found += this.getLetters(letter)
+        this.updateWord()
+      } else {
         this.$refs.fail.play()
         if (++this.room.fails % this.room.changeHintAt === 0) ++this.room.hint
-      } else {
-        this.$refs.correct.play()
-        this.room.found += letter
-        this.updateWord()
       }
       this.checkGameStatus()
     },
@@ -125,9 +126,7 @@ export default {
         this.word = this.room.word.split('')
         this.room.hints[this.room.hint] = 'You got hanged.'
         this.room.finished = true
-        setTimeout(() => {
-          this.$router.push('/')
-        }, 3000)
+        this.resetGame()
         return
       }
       if ((this.word.join('') === this.room.word) && !this.room.finished) {
@@ -139,12 +138,44 @@ export default {
         this.room.finished = true
         if (this.dictionary.length === 0) {
           this.room.hints[this.room.hint] = `Game over! Score: ${this.score}`
+          this.resetGame()
         } else {
           setTimeout(() => {
             this.fetchRoom()
           }, 1500)
         }
       }
+    },
+    resetGame () {
+      setTimeout(() => {
+        if (confirm('Do you want to start a new game?')) {
+          setTimeout(() => {
+            this.fetchRoom()
+          }, 250)
+        }
+      }, 1500)
+    },
+    getLetters (letter) {
+      switch (letter) {
+        case 'a':
+          return 'aàáâãä'
+        case 'e':
+          return 'eèéêë'
+        case 'i':
+          return 'iìíîï'
+        case 'o':
+          return 'oòóôõö'
+        case 'u':
+          return 'uùúûü'
+        default:
+          return letter
+      }
+    },
+    hasLetter (letter) {
+      let letters = this.getLetters(letter)
+      let length = letters.length
+      for (let i = 0; i < length; ++i) if (this.room.word.indexOf(letters[i]) !== -1) return true
+      return false
     }
   }
 }
