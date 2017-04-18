@@ -13,7 +13,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/play',
+      path: '/:dictionary',
       name: 'Room',
       component: Room
     }

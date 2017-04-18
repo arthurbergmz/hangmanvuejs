@@ -72,9 +72,12 @@ export default {
     },
     fetchRoom () {
       if (this.dictionary === null) {
-        this.$http.get(`/static/dictionary.json`).then((response) => {
+        this.$http.get(`/static/dictionary/${this.$router.currentRoute.params.dictionary}.json`).then((response) => {
           this.dictionary = response.data
           this.setupRoom()
+        }).catch(() => {
+          alert('Dictionary not found!')
+          this.$router.push('/')
         })
       } else {
         this.setupRoom(this.dictionary)

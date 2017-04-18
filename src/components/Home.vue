@@ -30,7 +30,7 @@ export default {
     fetchRoom () {
       setTimeout(() => {
         this.$router.push('play')
-      }, (Math.floor(Math.random() * 3250) + 1000))
+      }, (Math.floor(Math.random() * 1000)) + 500)
     }
   }
 }
