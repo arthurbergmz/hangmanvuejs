@@ -1,7 +1,7 @@
 <template>
   <div id="room">
     <section id="scenario" :class="getBackgroundColor()">
-      <div id="roomName">
+      <div id="roomHint">
         <h1>{{ this.room.hints[this.room.hint] }}</h1>
         <h2 v-show="room.fails >= 0 && room.fails < 6">You have {{6 - room.fails}} chances left.</h2>
       </div>
